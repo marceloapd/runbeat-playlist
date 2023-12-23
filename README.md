@@ -76,4 +76,4 @@ python runbeat_playlist.py
 
 ## Autor
 
-Este projeto foi desenvolvido por Seu Nome e está disponível sob a licença [Licença]. Entre em contato através do seu email para mais informações.
+Este projeto foi desenvolvido por marceloapd e está disponível sob a licença [Licença]. Entre em contato através do seu email para mais informações.
