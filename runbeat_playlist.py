@@ -63,10 +63,15 @@ def get_playlists_from_profile(sp, profile_id):
     while playlists:
         for playlist in playlists['items']:
             print(f"Analyzing playlist: {playlist['name']}")
-            tracks = make_spotify_request(sp.playlist_tracks, playlist['id'])
-            for item in tracks['items']:
-                if item['track']:  # Check if the track exists
-                    songs.append(item['track']['id'])
+            offset = 0
+            while True:
+                tracks = make_spotify_request(sp.playlist_tracks, playlist['id'], offset=offset)
+                if not tracks['items']:
+                    break
+                for item in tracks['items']:
+                    if item['track']:  # Check if the track exists
+                        songs.append(item['track']['id'])
+                offset += len(tracks['items'])
         if playlists['next']:
             playlists = make_spotify_request(sp.next, playlists)
         else:
@@ -96,6 +101,9 @@ for i in range(0, len(songs), 50):  # Process 50 songs at a time
                     features['instrumentalness'] <= instrumentalness_max and
                     features['acousticness'] <= acousticness_max):
                     filtered_songs.append(features['id'])
+
+# Remove duplicate songs
+filtered_songs = list(set(filtered_songs))
 
 # Create a custom playlist
 print("Creating a custom playlist on Spotify...")
