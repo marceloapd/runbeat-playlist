@@ -66,7 +66,9 @@ python runbeat_playlist.py
    - Na página da playlist, clique em "Adicionar ao Perfil".
 
 2. Informe a cadência desejada em passos por minuto.
-3. A aplicação analisará as playlists do perfil e criará uma nova playlist no Spotify com músicas que correspondam à cadência informada.
+3. Após executar o comando `python runbeat_playlist.py` e fornecer o link do perfil e a cadência, a aplicação irá redirecioná-lo para uma página que você configurou no spotify api. Copie a URL completa da página para onde foi redirecionado e cole no campo "Enter the URL you were redirected to" para completar o processo de autenticação e permitir que a aplicação acesse seu perfil do Spotify.
+4. A aplicação analisará as playlists do perfil e criará uma nova playlist no Spotify com músicas que correspondam à cadência informada.
+
 
 ## Extras
 
